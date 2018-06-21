@@ -1,0 +1,17 @@
+{
+
+  "servername" : "SERVERNAME",
+
+  "sites" : {
+    "site1" : "/var/www/html/site1",
+    "site2" : "/var/www/html/site2",
+    "site3" : "/var/www/html/site3"
+  },
+
+  "slack" : {
+    "webhook" : "https://hooks.slack.com/services/FOO/BAR/baz",
+    "channel" : "drupal",
+    "icon"    : ":dolphin:"
+  }
+
+}
