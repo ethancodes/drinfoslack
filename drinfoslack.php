@@ -51,14 +51,20 @@ else {
   // if we DO have updates available, make something nice out of them
   foreach ($updates_available as $site => $packages) {
     if (count($packages) == 0) {
-      $msg .= $site . ' has no updates available';
+      $msg .= $site . ' has no updates available.';
     }
     else if (count($packages) == 1) {
       $msg .= $site . ' has an update available for ';
-      $msg .= current(array_keys($packages));
+      $msg .= '`' . current(array_keys($packages)) . '`';
     }
     else {
       $msg .= $site . ' has ' . count($packages) . ' update(s) available';
+      if (count($packages) <= 3) {
+        $msg .= ': ';
+        foreach ($packages as $pkg => $pkginfo) {
+          $msg .= '`' . $pkg . '` ';
+        }
+      }
     }
     if (array_key_exists('drupal', $packages)) {
       $msg .= ' *DRUPAL CORE*';
@@ -67,6 +73,11 @@ else {
   }
 }
 
+
+if (array_key_exists('testmode', $config) && $config['testmode']) {
+  echo $msg . chr(10);
+  exit;
+}
 
 // send to Slack
 if ($msg) {

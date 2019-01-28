@@ -1,6 +1,8 @@
 {
 
   "servername" : "SERVERNAME",
+  
+  "testmode" : 0,
 
   "sites" : {
     "site1" : "/var/www/html/site1",
